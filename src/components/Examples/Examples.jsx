@@ -3,6 +3,7 @@ import TabButton from "../TabButton";
 import { EXAMPLES } from "../../data";
 import Section from "../Section";
 import './Examples.css'
+import Tab from '../Tabs'
 
 export default function Examples() {
   const [ selectedTopic, setSelectedTopic ] = useState()
@@ -29,14 +30,17 @@ export default function Examples() {
   return(
     <>
       <Section title='Examples' id="examples">
-        <menu>
+        <Tab button={
+          <>
           <TabButton isSelected={selectedTopic === 'components'} onClick={() => handleSelect('components')}>Components</TabButton>
           <TabButton isSelected={selectedTopic === 'jsx'} onClick={() => handleSelect('jsx')}>JSX</TabButton>
           <TabButton isSelected={selectedTopic === 'props'} onClick={() => handleSelect('props')}>Props</TabButton>
           <TabButton isSelected={selectedTopic === 'state'} onClick={() => handleSelect('state')}>State</TabButton>
-        </menu>
-        {/* // method 3 */}
+          </>
+        }>
         {tabContent}
+        </Tab>
+        {/* // method 3 */}
 
         {/* // method 1 */}
         {/* {!selectedTopic && <p>Please select a topic.</p>}
